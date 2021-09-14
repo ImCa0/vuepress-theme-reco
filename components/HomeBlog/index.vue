@@ -55,6 +55,10 @@
     <ModuleTransition delay="0.24">
       <Content v-show="recoShowModule" class="home-center" custom/>
     </ModuleTransition>
+
+    <ModuleTransition delay="0.32">
+      <Footer v-show="recoShowModule" class="footer" />
+    </ModuleTransition>
   </div>
 </template>
 
@@ -66,9 +70,10 @@ import NoteAbstract from '@theme/components/NoteAbstract'
 import { ModuleTransition, RecoIcon } from '@vuepress-reco/core/lib/components'
 import PersonalInfo from '@theme/components/PersonalInfo'
 import { getOneColor } from '@theme/helpers/other'
+import Footer from '@theme/components/Footer'
 
 export default defineComponent({
-  components: { NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo, RecoIcon },
+  components: { NoteAbstract, TagList, FriendLink, ModuleTransition, PersonalInfo, RecoIcon, Footer },
   setup (props, ctx) {
     const instance = getCurrentInstance().proxy
 
@@ -126,7 +131,7 @@ export default defineComponent({
     position relative
     box-sizing border-box
     padding 0 20px
-    height 100vh
+    height calc(100vh - 3.6rem)
     display flex
     align-items center
     justify-content center
