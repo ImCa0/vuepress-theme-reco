@@ -3,30 +3,38 @@
     class="abstract-item"
     @click="$router.push(item.path)">
     <reco-icon v-if="item.frontmatter.sticky" icon="reco-sticky" />
-    <div class="title">
-      <reco-icon v-if="item.frontmatter.keys" icon="reco-lock" />
-      <router-link :to="item.path">{{item.title}}</router-link>
+    <div style="flex: 1 1 50%" v-if="item.frontmatter.pic">
+      <NoteAbstractImage :item="item"></NoteAbstractImage>
     </div>
-    <div class="abstract" v-html="item.excerpt"></div>
-    <PageInfo
-      :pageInfo="item"
-      :currentTag="currentTag">
-    </PageInfo>
+    <div class="info" style="flex: 1 1 50%; padding-left: 1rem; align-self: flex-end">
+      <div class="title">
+        <reco-icon v-if="item.frontmatter.keys" icon="reco-lock" />
+        <router-link :to="item.path">{{item.title}}</router-link>
+      </div>
+      <div class="abstract" v-html="item.excerpt"></div>
+      <PageInfo
+        :pageInfo="item"
+        :currentTag="currentTag">
+      </PageInfo>
+      </div>
   </div>
 </template>
 
 <script>
+import NoteAbstractImage from './NoteAbstractImage'
 import { defineComponent } from 'vue-demi'
 import { RecoIcon } from '@vuepress-reco/core/lib/components'
 import PageInfo from './PageInfo'
 export default defineComponent({
-  components: { PageInfo, RecoIcon },
+  components: { PageInfo, RecoIcon, NoteAbstractImage },
   props: ['item', 'currentPage', 'currentTag']
 })
 </script>
 
 <style lang="stylus" scoped>
 .abstract-item
+  display flex
+  align-items center 
   position relative
   margin: 0 auto 20px;
   padding: 16px 20px;
@@ -89,4 +97,8 @@ export default defineComponent({
     display block
     margin-top 1rem;
     margin-left: 0!important;
+  .abstract-item
+    flex-direction column;
+  .info
+    align-self flex-start!important;
 </style>
