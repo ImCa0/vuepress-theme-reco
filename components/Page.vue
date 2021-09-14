@@ -2,6 +2,7 @@
   <main class="page" :style="pageStyle">
     <ModuleTransition delay="0.08">
       <section v-show="recoShowModule">
+        <PageImage/>
         <div class="page-title">
           <h1 class="title">{{$page.title}}</h1>
           <PageInfo :pageInfo="$page" :showAccessNumber="showAccessNumber"></PageInfo>
@@ -60,6 +61,7 @@
 </template>
 
 <script>
+import PageImage from '@theme/components/PageImage'
 import { defineComponent, computed, getCurrentInstance, toRefs } from 'vue-demi'
 import PageInfo from '@theme/components/PageInfo'
 import { resolvePage, outboundRE, endingSlashRE } from '@theme/helpers/utils'
@@ -67,7 +69,7 @@ import { ModuleTransition } from '@vuepress-reco/core/lib/components'
 import SubSidebar from '@theme/components/SubSidebar'
 
 export default defineComponent({
-  components: { PageInfo, ModuleTransition, SubSidebar },
+  components: { PageInfo, ModuleTransition, SubSidebar, PageImage },
 
   props: ['sidebarItems'],
 
@@ -241,7 +243,7 @@ function flatten (items, res) {
 
 .page
   position relative
-  padding-top 5rem
+  padding-top 3.6rem
   padding-bottom 2rem
   padding-right 14rem
   display block
