@@ -1,6 +1,6 @@
 <template>
-  <div class="page-image" v-if="$page.frontmatter.pic">
-    <img :src="$page.frontmatter.pic" alt="">
+  <div class="page-image" v-if="$page.frontmatter.head_img">
+    <img :src="$page.frontmatter.head_img" alt="">
   </div>
 </template>
 

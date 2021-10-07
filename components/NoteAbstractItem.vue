@@ -3,7 +3,7 @@
     class="abstract-item"
     @click="$router.push(item.path)">
     <reco-icon v-if="item.frontmatter.sticky" icon="reco-sticky" />
-    <div style="flex: 1 1 50%" v-if="item.frontmatter.pic">
+    <div style="flex: 1 1 50%" v-if="item.frontmatter.abs_img">
       <NoteAbstractImage :item="item"></NoteAbstractImage>
     </div>
     <div class="info" style="flex: 1 1 50%; padding-left: 1rem; align-self: flex-end">

@@ -23,7 +23,7 @@
 
 使用方法：
 
-在 Markdown 文件中添加 pic 的 frontmatter，示例：
+在 Markdown 文件中添加 abs_img 的 frontmatter，示例：
 
 ```
 ---
@@ -34,15 +34,15 @@ tags:
   - 折腾
 categories:
   - 随笔
-pic: /img/2021/summer.jpg
+abs_img: /img/2021/summer.jpg
 ---
 ```
 
-其中，pic 的路径基于项目的 public 文件夹，因此需要将 summer.jpg 放置于 .vuepress/public/img/2021 目录下
+其中，abs_img 的路径基于项目的 public 文件夹，因此需要将 summer.jpg 放置于 .vuepress/public/img/2021 目录下
 
 ### 文章页头图
 
-文章页头图与首页配图一致，无需额外配置
+与首页文章配图类似，只需在 frontmatter 中添加 head_img 即可，文件路径基于项目的 public 文件夹
 
 ### bug 修复
 
