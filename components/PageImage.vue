@@ -13,9 +13,16 @@ export default {
 <style scoped>
 .page-image {
   overflow: hidden;
+  position: relative;
 }
 img {
   width: 100vw;
+  position: absolute;  
+  top: 0;  
+  bottom: 0;  
+  left: 0;  
+  right: 0;  
+  margin: auto;
 }
 @media (min-width: 1024px) {
   .page-image {
