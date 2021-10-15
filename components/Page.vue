@@ -55,7 +55,7 @@
     </ModuleTransition>
 
     <ModuleTransition>
-      <SubSidebar v-if="recoShowModule" class="side-bar" />
+      <SubSidebar v-if="recoShowModule" v-show="!$page.frontmatter.head_img || sidebarVisiable" class="side-bar" />
     </ModuleTransition>
   </main>
 </template>
@@ -72,6 +72,45 @@ export default defineComponent({
   components: { PageInfo, ModuleTransition, SubSidebar, PageImage },
 
   props: ['sidebarItems'],
+
+  data() {
+    return {
+      sidebarVisiable: false
+    }
+  },
+
+  mounted () {
+    window.addEventListener('scroll', this.throttle(this.handleScroll, 100))
+  },
+
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.throttle(this.handleScroll, 100))
+  },
+
+  methods: {
+    handleScroll () {
+      this.sidebarVisiable = window.pageYOffset > window.innerHeight - 57.6
+    },
+    throttle (func, delay) {
+      let timer = null
+      let startTime = Date.now()
+
+      return function () {
+        const curTime = Date.now()
+        const remaining = delay - (curTime - startTime)
+        const context = this
+        const args = arguments
+
+        clearTimeout(timer)
+        if (remaining <= 0) {
+          func.apply(context, args)
+          startTime = Date.now()
+        } else {
+          timer = setTimeout(func, remaining)
+        }
+      }
+    }
+  },
 
   setup (props, ctx) {
     const instance = getCurrentInstance().proxy
@@ -245,7 +284,8 @@ function flatten (items, res) {
   position relative
   padding-top 3.6rem
   padding-bottom 2rem
-  padding-right 14rem
+  // padding-right 14rem
+  padding-right 0
   display block
   .side-bar
     position fixed
@@ -307,7 +347,7 @@ function flatten (items, res) {
   .next
     float right
 
-@media (max-width: $MQMobile)
+@media (max-width: 1366px)
   .page
     padding-right 0
     .side-bar
