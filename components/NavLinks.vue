@@ -18,7 +18,7 @@
       target="_blank"
       rel="noopener noreferrer"
     >
-      <reco-icon :icon="`reco-${repoLabel.toLowerCase()}`" />
+      <reco-icon icon="fab fa-github" />
       {{ repoLabel }}
       <OutboundLink/>
     </a>
@@ -101,7 +101,7 @@ export default defineComponent({
           }),
           text: category.text || instance.$recoLocales.category,
           type: 'links',
-          icon: 'reco-category'
+          icon: 'fas fa-book'
         })
       }
 
@@ -169,7 +169,7 @@ export default defineComponent({
     color var(--text-color)
     &:hover, &.router-link-active
       color $accentColor
-      .iconfont
+      .iconfont, .fas, .fab
         color $accentColor
   .nav-item
     position relative
